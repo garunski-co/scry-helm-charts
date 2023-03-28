@@ -1,0 +1,6 @@
+apiVersion: v2
+name: structurizr-local
+description: Provides a tailored method for hosting Structurizr locally, enabling users to access their diagrams, documentation, and ARDs (Architecture Decision Records) with ease.
+type: application
+version: 1.0.1
+appVersion: "latest"

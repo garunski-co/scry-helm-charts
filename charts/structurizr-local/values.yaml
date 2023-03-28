@@ -1,0 +1,29 @@
+localDirectory: /Users/garun/code/structurizr/examples/dsl/system-catalog
+
+replicaCount: 1
+
+image:
+  repository: structurizr/lite
+  pullPolicy: IfNotPresent
+  tag: "latest"
+
+service: 
+  port: 8080
+
+ingress:
+  host: diagrams.local.scryapp.website
+  annotations: {}
+
+serviceAccount:
+  create: true
+  annotations: {}
+  name: ""
+
+podAnnotations: {}
+
+podSecurityContext: {}
+
+securityContext: {}
+
+resources: {}
+
