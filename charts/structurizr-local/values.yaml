@@ -11,8 +11,18 @@ service:
   port: 8080
 
 ingress:
+  create: false
   host: diagrams.local.scryapp.website
   annotations: {}
+
+gatewayApi:
+  create: true
+  host: diagrams.local.scryapp.website
+  gateway: 
+    create: true
+    className: cilium
+    name: ""
+    namespace: ""
 
 serviceAccount:
   create: true

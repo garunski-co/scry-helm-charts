@@ -1,4 +1,5 @@
 {{- $fullName := include "structurizr-local.fullname" . -}}
+{{- if .Values.ingress.create -}}
 
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -23,3 +24,4 @@ spec:
                 name: {{ $fullName }}
                 port:
                   number: {{ .Values.service.port }}
+{{- end -}}
