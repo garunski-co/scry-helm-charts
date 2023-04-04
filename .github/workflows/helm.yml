@@ -26,6 +26,7 @@ jobs:
 
       - name: Configure Version
         run: |
+          ls
           grep -rl 'REPLACE_MINOR_REVISION' **/Chart.yaml | xargs sed -i 's/REPLACE_MINOR_REVISION/${{ github.run_number }}/g'
 
 
