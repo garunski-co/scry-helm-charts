@@ -15,6 +15,18 @@ entries:
     version: 1.0.2
   - apiVersion: v2
     appVersion: latest
+    created: "2023-04-04T19:20:30.327799809Z"
+    description: Provides a tailored method for hosting Structurizr locally, enabling
+      users to access their diagrams, documentation, and ARDs (Architecture Decision
+      Records) with ease.
+    digest: b1b1392966571347d6480dbf9a6a2ab6da3a40b5949b5b16e6698f557d32fc8e
+    name: structurizr-local
+    type: application
+    urls:
+    - https://github.com/garunski-co/scry-helm-charts/releases/download/structurizr-local-1.0.2-11/structurizr-local-1.0.2-11.tgz
+    version: 1.0.2-11
+  - apiVersion: v2
+    appVersion: latest
     created: "2023-04-04T19:18:47.714318262Z"
     description: Provides a tailored method for hosting Structurizr locally, enabling
       users to access their diagrams, documentation, and ARDs (Architecture Decision
@@ -37,4 +49,4 @@ entries:
     urls:
     - https://github.com/garunski-co/scry-helm-charts/releases/download/structurizr-local-1.0.1/structurizr-local-1.0.1.tgz
     version: 1.0.1
-generated: "2023-04-04T19:18:47.714339862Z"
+generated: "2023-04-04T19:20:30.32781821Z"
