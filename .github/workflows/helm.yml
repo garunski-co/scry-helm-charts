@@ -26,7 +26,9 @@ jobs:
 
       - name: Configure Version
         run: |
-          find **/Chart.yaml -type f -exec sed -i 's/REPLACE_MINOR_REVISION/${{ github.run_number }}/g' {} \;
+          grep -rl 'REPLACE_MINOR_REVISION' **/Chart.yaml | xargs sed -i 's/REPLACE_MINOR_REVISION/${{ github.run_number }}/g'
+
+
 
       - name: Run chart-releaser
         uses: helm/chart-releaser-action@v1.5.0
