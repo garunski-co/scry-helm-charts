@@ -16,7 +16,7 @@ ingress:
   annotations: {}
 
 gatewayApi:
-  create: true
+  create: false
   host: diagrams.local.scryapp.website
   gateway: 
     create: true
