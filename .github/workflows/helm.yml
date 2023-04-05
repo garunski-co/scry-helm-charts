@@ -28,6 +28,10 @@ jobs:
         run: |
           grep -rl 'REPLACE_MINOR_REVISION' */**/Chart.yaml | xargs sed -i 's/REPLACE_MINOR_REVISION/${{ github.run_number }}/g'
 
+      - name: Run Helm Dependency build
+        run: |
+          helm dependency build
+
       - name: Run chart-releaser
         uses: helm/chart-releaser-action@v1.5.0
         env:
