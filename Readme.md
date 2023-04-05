@@ -1,5 +1,8 @@
 charts for scry specific development
 
+
+## structurizr-local debug
+
 ```
 helm upgrade -i structurizr ./charts/structurizr-local
 
@@ -9,3 +12,11 @@ helm upgrade -i --set localDirectory="/FULL PATH TO THE FOLDER" --set gatewayApi
 
 
 ```
+
+## postgres-local debug
+
+
+helm upgrade -i structurizr ./charts/structurizr-local
+
+
+helm upgrade -i postgres-local  ./charts/postgres-local 

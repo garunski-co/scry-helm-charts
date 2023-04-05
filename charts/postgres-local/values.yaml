@@ -1,0 +1,10 @@
+replicaCount: 1
+
+postgresql:
+  primary:
+    persistence:
+      existingClaim: pg-pvc
+  auth: 
+    postgresPassword: pgpass
+  volumePermissions:
+    enabled: true
