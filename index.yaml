@@ -3,6 +3,20 @@ entries:
   postgres-local:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2023-10-14T22:27:40.692185682Z"
+    dependencies:
+    - name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 12.2.7
+    description: A Helm chart for Kubernetes
+    digest: ce2f1d04a2530c2112d61c4975d898834e6f93c4aa545ae57fbf14c7901e056e
+    name: postgres-local
+    type: application
+    urls:
+    - https://github.com/garunski-co/scry-helm-charts/releases/download/postgres-local-1.0.17/postgres-local-1.0.17.tgz
+    version: 1.0.17
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2023-04-05T18:20:59.750891938Z"
     dependencies:
     - name: postgresql
@@ -16,6 +30,18 @@ entries:
     - https://github.com/garunski-co/scry-helm-charts/releases/download/postgres-local-1.0.16/postgres-local-1.0.16.tgz
     version: 1.0.16
   structurizr-local:
+  - apiVersion: v2
+    appVersion: latest
+    created: "2023-10-14T22:27:40.809003052Z"
+    description: Provides a tailored method for hosting Structurizr locally, enabling
+      users to access their diagrams, documentation, and ARDs (Architecture Decision
+      Records) with ease.
+    digest: 61824c0fc9c3371db283ceb2491fc0daea969a5bbc4b2eb88fb3d0bcf42cb869
+    name: structurizr-local
+    type: application
+    urls:
+    - https://github.com/garunski-co/scry-helm-charts/releases/download/structurizr-local-1.0.17/structurizr-local-1.0.17.tgz
+    version: 1.0.17
   - apiVersion: v2
     appVersion: latest
     created: "2023-04-05T18:20:59.896370152Z"
@@ -88,4 +114,4 @@ entries:
     urls:
     - https://github.com/garunski-co/scry-helm-charts/releases/download/structurizr-local-1.0.1/structurizr-local-1.0.1.tgz
     version: 1.0.1
-generated: "2023-04-05T18:20:59.896400253Z"
+generated: "2023-10-14T22:27:40.809216754Z"
