@@ -1,0 +1,18 @@
+{{- $fullName := include "directus-local.fullname" . -}}
+{{- if and .Values.gatewayApi.create .Values.gatewayApi.gateway.create  -}}
+
+apiVersion: gateway.networking.k8s.io/v1beta1
+kind: Gateway
+metadata:
+  name: {{ $fullName }}-gw
+spec:
+  gatewayClassName: {{ .Values.gatewayApi.gateway.className }}
+  listeners:
+    - protocol: HTTP
+      port: 80
+      name: {{ $fullName }}-route
+      allowedRoutes:
+        namespaces:
+          from: Same
+
+{{- end -}}

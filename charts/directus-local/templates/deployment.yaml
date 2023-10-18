@@ -1,0 +1,119 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "directus-local.fullname" . }}
+  labels:
+    {{- include "directus-local.labels" . | nindent 4 }}
+spec:
+  {{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.replicaCount }}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include "directus-local.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "directus-local.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "directus-local.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+            - name: PORT
+              value: {{ .Values.service.port | quote }}
+            - name: KEY
+              value: {{ .Values.env.key }}
+            - name: SECRET
+              value: {{ .Values.env.secret }}
+            {{- if .Values.env.publicUrl }}
+            - name: PUBLIC_URL
+              value: {{ .Values.env.publicUrl}}
+            {{- end }}
+            {{- if .Values.env.dbClient }}
+            - name: DB_CLIENT
+              value: {{ .Values.env.dbClient }}
+            {{- end }}
+            {{- if .Values.env.dbHost }}
+            - name: DB_HOST
+              value: {{ .Values.env.dbHost }}
+            {{- end }}
+            {{- if .Values.env.dbPort }}
+            - name: DB_PORT
+              value: "{{ .Values.env.dbPort }}"
+            {{- end }}
+            {{- if .Values.env.dbDatabase }}
+            - name: DB_DATABASE
+              value: {{ .Values.env.dbDatabase }}
+            {{- end }}
+            {{- if .Values.env.dbUser }}
+            - name: DB_USER
+              value: {{ .Values.env.dbUser }}
+            {{- end }}
+            {{- if .Values.env.dbPassword }}
+            - name: DB_PASSWORD
+              value: {{ .Values.env.dbPassword }}
+            {{- end }}
+            {{- if .Values.env.cacheEnabled }}
+            - name: CACHE_ENABLED
+              value: "{{ .Values.env.cacheEnabled }}"
+            {{- end }}
+            {{- if .Values.env.cacheStore }}
+            - name: CACHE_STORE
+              value: {{ .Values.env.cacheStore }}
+            {{- end }}
+            {{- if .Values.env.redis }}
+            - name: REDIS
+              value: {{ .Values.env.redis }}
+            {{- end }}
+            {{- if .Values.env.adminEmail }}
+            - name: ADMIN_EMAIL
+              value: {{ .Values.env.adminEmail }}
+            {{- end }}
+            {{- if .Values.env.adminPassword }}
+            - name: ADMIN_PASSWORD
+              value: {{ .Values.env.adminPassword }}
+            {{- end }}
+            {{- if .Values.extraEnvVars }}
+            {{- tpl (toYaml .Values.extraEnvVars) $ | nindent 12 }}
+            {{- end }}
+          ports:
+            - name: http
+              containerPort: {{ .Values.service.port }}
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /admin
+              port: http
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}

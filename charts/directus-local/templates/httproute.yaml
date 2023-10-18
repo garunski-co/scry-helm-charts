@@ -1,0 +1,29 @@
+{{- $fullName := include "directus-local.fullname" . -}}
+{{- if .Values.gatewayApi.create  -}}
+
+apiVersion: gateway.networking.k8s.io/v1beta1
+kind: HTTPRoute
+metadata:
+  name: {{ $fullName }}-route
+  labels:
+    {{- include "directus-local.labels" . | nindent 4 }}
+  {{- with .Values.gatewayApi.annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+spec:
+  parentRefs:
+  {{- if .Values.gatewayApi.gateway.create  }}
+    - name: {{ $fullName }}-gw
+  {{- else -}}
+    - name: {{ .Values.gatewayApi.gateway.name }}
+      namespace: {{ .Values.gatewayApi.gateway.namespace }}
+  {{- end }}
+  hostnames:
+    - {{ .Values.gatewayApi.host | quote }}
+  rules:
+    - backendRefs:
+      - name: {{ $fullName }}-svc
+        port: {{ .Values.service.port }}
+
+{{- end -}}

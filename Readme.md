@@ -25,3 +25,21 @@ helm upgrade -i postgres-local  ./charts/postgres-local
 ```
 helm delete postgres-local
 ```
+
+## directus-local 
+
+
+```
+helm upgrade -i directus-local  ./charts/directus-local 
+```
+
+```
+helm upgrade -i --repo https://garunski-co.github.io/scry-helm-charts/ directus-local directus-local 
+```
+
+```
+helm delete directus-local
+```
+
+## update local hosts file to reflect the gateway ip address
+

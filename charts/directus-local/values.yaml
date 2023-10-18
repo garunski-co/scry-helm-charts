@@ -1,0 +1,58 @@
+replicaCount: 1
+
+image:
+  repository: directus/directus
+  pullPolicy: IfNotPresent
+  tag: "10.6"
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  create: true
+  annotations: {}
+  name: ""
+
+podAnnotations: {}
+
+podSecurityContext: {}
+
+securityContext: {}
+
+service:
+  type: ClusterIP
+  port: 8065
+
+ingress:
+  create: false
+  host: admin.local.scryapp.website
+  annotations: {}
+
+gatewayApi:
+  create: false
+  host: admin.local.scryapp.website
+  gateway: 
+    create: true
+    className: cilium
+
+
+resources: {}
+
+autoscaling:
+  enabled: false
+
+env:
+  key: 'BB1AFE70-F462-4C98-9935-6902EADA57A5'
+  secret: 'EF222AE9-10FB-4190-AD4C-C6E866D19EF2'
+  dbClient: 'pg'
+  dbHost: 'postgres-local-postgresql-hl.default.svc.cluster.local'
+  dbPort: '5432'
+  dbDatabase: 'scry'
+  dbUser: 'scryuser'
+  dbPassword: 'scrypassword'
+  cacheEnabled: 'false'
+  adminEmail: 'garun@garunski.com'
+  adminPassword: 'test123'
+
+
