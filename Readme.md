@@ -41,5 +41,3 @@ helm upgrade -i --repo https://garunski-co.github.io/scry-helm-charts/ directus-
 helm delete directus-local
 ```
 
-## update local hosts file to reflect the gateway ip address
-
