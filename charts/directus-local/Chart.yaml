@@ -3,6 +3,6 @@ name: directus-local
 description: A Helm chart for Directus locally
 type: application
 
-version: 1.0.1
+version: 1.0.REPLACE_MINOR_REVISION
 
 appVersion: "1.16.0"
