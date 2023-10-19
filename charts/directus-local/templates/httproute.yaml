@@ -22,6 +22,10 @@ spec:
   hostnames:
     - {{ .Values.gatewayApi.host | quote }}
   rules:
+    {{- with .Values.gatewayApi.route.matches }}
+    - matches:
+      {{- toYaml . | nindent 6 }}
+    {{- end }}
     - backendRefs:
       - name: {{ $fullName }}-svc
         port: {{ .Values.service.port }}

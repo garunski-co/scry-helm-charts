@@ -88,6 +88,8 @@ spec:
             - name: ADMIN_PASSWORD
               value: {{ .Values.env.adminPassword }}
             {{- end }}
+            - name: ROOT_REDIRECT
+              value: 'false'
             {{- if .Values.extraEnvVars }}
             {{- tpl (toYaml .Values.extraEnvVars) $ | nindent 12 }}
             {{- end }}
@@ -97,11 +99,11 @@ spec:
               protocol: TCP
           livenessProbe:
             httpGet:
-              path: /
+              path: /server/health
               port: http
           readinessProbe:
             httpGet:
-              path: /
+              path: /server/ping
               port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}

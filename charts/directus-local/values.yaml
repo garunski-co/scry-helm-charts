@@ -30,12 +30,17 @@ ingress:
   annotations: {}
 
 gatewayApi:
-  create: false
+  create: true
   host: admin.local.scryapp.website
   gateway: 
-    create: true
+    create: false
     className: cilium
-
+    name: scry-gw
+    namespace: default
+  route:
+    matches:
+      - type: PathPrefix
+        value: /admin
 
 resources: {}
 
