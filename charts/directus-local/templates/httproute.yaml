@@ -15,7 +15,7 @@ spec:
   parentRefs:
   {{- if .Values.gatewayApi.gateway.create  }}
     - name: {{ $fullName }}-gw
-  {{- else -}}
+  {{- else }}
     - name: {{ .Values.gatewayApi.gateway.name }}
       namespace: {{ .Values.gatewayApi.gateway.namespace }}
   {{- end }}
