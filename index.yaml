@@ -3,6 +3,16 @@ entries:
   directus-local:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2023-10-24T15:07:03.218443949Z"
+    description: A Helm chart for Directus locally
+    digest: 96a193970c428c5bc5f6f689599a2ff63329193b3b31d5d831007cb6a5059a67
+    name: directus-local
+    type: application
+    urls:
+    - https://github.com/garunski-co/scry-helm-charts/releases/download/directus-local-1.0.24/directus-local-1.0.24.tgz
+    version: 1.0.24
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2023-10-19T14:16:24.909442983Z"
     description: A Helm chart for Directus locally
     digest: 8a20f59f2415a5aeff527b5e4102498c11b0487db9a05269080812b56db18be0
@@ -62,6 +72,20 @@ entries:
     - https://github.com/garunski-co/scry-helm-charts/releases/download/directus-local-1.0.1/directus-local-1.0.1.tgz
     version: 1.0.1
   postgres-local:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2023-10-24T15:07:03.385217105Z"
+    dependencies:
+    - name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 12.2.7
+    description: A Helm chart for Kubernetes
+    digest: 3c0eec1c60102e9f454c600f8f267a5169d8770ca99a7122c1ac3d5ed33510db
+    name: postgres-local
+    type: application
+    urls:
+    - https://github.com/garunski-co/scry-helm-charts/releases/download/postgres-local-1.0.24/postgres-local-1.0.24.tgz
+    version: 1.0.24
   - apiVersion: v2
     appVersion: 1.16.0
     created: "2023-10-19T14:16:25.162775438Z"
@@ -175,6 +199,18 @@ entries:
     - https://github.com/garunski-co/scry-helm-charts/releases/download/postgres-local-1.0.16/postgres-local-1.0.16.tgz
     version: 1.0.16
   structurizr-local:
+  - apiVersion: v2
+    appVersion: latest
+    created: "2023-10-24T15:07:03.628662094Z"
+    description: Provides a tailored method for hosting Structurizr locally, enabling
+      users to access their diagrams, documentation, and ARDs (Architecture Decision
+      Records) with ease.
+    digest: e95f0d971e03db4065996145dcf39b246f44b19a41220fa500e44a2a6636ee75
+    name: structurizr-local
+    type: application
+    urls:
+    - https://github.com/garunski-co/scry-helm-charts/releases/download/structurizr-local-1.0.24/structurizr-local-1.0.24.tgz
+    version: 1.0.24
   - apiVersion: v2
     appVersion: latest
     created: "2023-10-19T14:16:25.404393181Z"
@@ -331,4 +367,4 @@ entries:
     urls:
     - https://github.com/garunski-co/scry-helm-charts/releases/download/structurizr-local-1.0.1/structurizr-local-1.0.1.tgz
     version: 1.0.1
-generated: "2023-10-19T14:16:25.404655981Z"
+generated: "2023-10-24T15:07:03.628964994Z"
