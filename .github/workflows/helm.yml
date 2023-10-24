@@ -24,10 +24,6 @@ jobs:
       - name: Install Helm
         uses: azure/setup-helm@v3
 
-      - name: Add repos for Dependencies
-        run: |
-          helm repo add bitnami https://charts.bitnami.com/bitnami
-
       - name: Configure Version
         run: |
           grep -rl 'REPLACE_MINOR_REVISION' */**/Chart.yaml | xargs sed -i 's/REPLACE_MINOR_REVISION/${{ github.run_number }}/g'
