@@ -24,6 +24,10 @@ jobs:
       - name: Install Helm
         uses: azure/setup-helm@v3
 
+      - name: Add repos for Dependencies
+        run: |
+          find . -type f -name "Chart.yaml" -exec grep -H "dependencies:" {} \; -exec grep -H "repository:" {} \; | awk -F "repository:" '/repository:/ { sub(/^[ \t]+/, "", $2); sub(/[ \t]+$/, "", $2); print "helm repo add chart" NR, $2 }' | sh
+
       - name: Configure Version
         run: |
           grep -rl 'REPLACE_MINOR_REVISION' */**/Chart.yaml | xargs sed -i 's/REPLACE_MINOR_REVISION/${{ github.run_number }}/g'
