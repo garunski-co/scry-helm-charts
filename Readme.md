@@ -1,3 +1,11 @@
+# Helm Charts for Scry Development
+
+add the chart repo with 
+
+```
+helm repo add scrylocal https://garunski-co.github.io/scry-helm-charts/
+```
+
 charts for scry specific development
 
 
